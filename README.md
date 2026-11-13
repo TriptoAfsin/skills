@@ -8,7 +8,9 @@ Agent skills I use every day, packaged so any agent that supports the open
 | Skill | What it does |
 |---|---|
 | [`lean-flow`](skills/lean-flow) | The dev loop around the code: GitHub CLI, verification and E2E with playwright-cli, Railway deploys and variables, safe use of any other platform CLI, and cleaning up dev servers, browsers and Docker containers afterwards |
-| [`design-flow`](skills/design-flow) | UI design from brief to code: intake questions one at a time, two or three directions mocked up as a live Artifact, you pick, the system gets locked into `DESIGN.md`, then build, polish and verify |
+| [`design-flow`](skills/design-flow) | UI design from brief to code: intake questions one at a time, two or three directions mocked up as a live Artifact, you pick, the system gets locked into `DESIGN.md`, then build, polish and verify. Hallmark first, and missing handoff skills get installed |
+| [`before-after`](skills/before-after) | Before/after (or single) screenshots with numbered boxes, circles, arrows, highlights, callouts, redaction and a legend, rendered into one PNG with any capture tool |
+| [`team-reply`](skills/team-reply) | Collect the thread, answer every question in order, write in a configurable style (default: short, with a word budget per platform), format for Slack, Teams, WhatsApp, email or text. Drafts only |
 
 ## Install
 
@@ -84,6 +86,28 @@ npx skills add jakubkrehel/make-interfaces-feel-better -g
 ```
 
 `before-after` (optional, for client-facing changes) is a separate skill. Without an Artifact tool, step 3 writes one self-contained HTML file instead.
+
+## before-after
+
+```bash
+npx skills add TriptoAfsin/skills --skill before-after -g
+```
+
+Capture both states with whatever browser or device tool you have, write a small `spec.json`, then run
+`scripts/compare.py` (Python 3 + Pillow). Marks come in colours by kind (added, changed, removed, note) and in shapes
+(box, circle, highlight, arrow, redact), with optional callout labels. A single panel gives one annotated screenshot.
+
+## team-reply
+
+```bash
+npx skills add TriptoAfsin/skills --skill team-reply -g
+```
+
+It reads the conversation first (the Slack connector, or a pasted Teams, WhatsApp or email thread), answers each
+question in order, and formats the result with `scripts/fmt.py --to slack|teams|whatsapp|email|text --max-words N`.
+The default style is mine: short, a bold-label bullet per point, and a word budget per platform. Override any part
+of it with `~/.agents/team-reply.md` (for you) or `.messages/STYLE.md` (for one project). See
+[`references/style.md`](skills/team-reply/references/style.md).
 
 ## License
 

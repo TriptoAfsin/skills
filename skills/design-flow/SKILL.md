@@ -1,6 +1,6 @@
 ---
 name: design-flow
-description: Run a UI design from brief to shipped code in a fixed order - ask the intake questions one at a time, mock up two or three distinct directions as a live Artifact, let the user choose, lock the chosen system into DESIGN.md, then build, polish and verify. Orchestrates hallmark (direction and anti-slop), frontend-design (implementation), emil-design-eng and make-interfaces-feel-better (polish and motion). Use when designing or redesigning a page, screen, flow, landing page, dashboard or component, when the user says "design", "mock up", "prototype", "redesign" or "make it look good", or before writing any new UI.
+description: Run a UI design from brief to shipped code in a fixed order - ask the intake questions one at a time, mock up two or three distinct directions as a live Artifact, let the user choose, lock the chosen system into DESIGN.md, then build, polish and verify. Orchestrates hallmark first (direction, anti-slop, DESIGN.md; installed automatically if missing), frontend-design (implementation), emil-design-eng and make-interfaces-feel-better (polish and motion). Use when designing or redesigning a page, screen, flow, landing page, dashboard or component, when the user says "design", "mock up", "prototype", "redesign" or "make it look good", or before writing any new UI.
 ---
 
 # design-flow
@@ -16,6 +16,25 @@ Nothing reaches the codebase until the user has seen it and picked it. The order
 | 4 | The user chooses, then iterate on the same Artifact | question UI | below |
 | 5 | Lock the system into `DESIGN.md` | `hallmark` "lock the system" | below |
 | 6–8 | Build → polish → verify | `frontend-design`, `emil-design-eng`, `make-interfaces-feel-better`, `lean-flow` | [references/handoff.md](references/handoff.md) |
+
+## Skills it hands off to: check, install if missing
+
+**`hallmark` is the first choice** for directions, the slop test, `study`, `redesign`, `audit` and locking
+`DESIGN.md`. Prefer it over any other design skill that's installed. Before step 2, check that each handoff skill is
+installed (`npx skills ls -g`, or look in the agent's skills folder). If one is missing, install it from its official
+source before using it, and say so in one line:
+
+| Skill | Step | Install |
+|---|---|---|
+| `hallmark` (required) | 2, 5, 8 | `npx skills add nutlope/hallmark -g -y` |
+| `frontend-design` | 6 | `npx skills add anthropics/skills --skill frontend-design -g -y` |
+| `emil-design-eng` | 7 | `npx skills add emilkowalski/skill -g -y` |
+| `make-interfaces-feel-better` | 7 | `npx skills add jakubkrehel/make-interfaces-feel-better -g -y` |
+| `lean-flow` | 8 | `npx skills add TriptoAfsin/skills --skill lean-flow -g -y` |
+
+A skill installed in the middle of a session may only load in the next one. If it isn't available yet, read its
+`SKILL.md` from the install folder and follow it directly. If an install fails (offline, blocked), say so and carry
+on with the step by hand, but never skip hallmark's slop test.
 
 ## 0. Pre-flight
 
