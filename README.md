@@ -71,7 +71,8 @@ My design process as a skill. **Nothing reaches the codebase until I've seen it 
 It orchestrates other skills, so install them too:
 
 ```bash
-npx skills add TriptoAfsin/skills --skill design-flow --skill lean-flow -g
+npx skills add TriptoAfsin/skills --skill design-flow -g
+npx skills add TriptoAfsin/skills --skill lean-flow -g
 npx skills add nutlope/hallmark -g
 npx skills add emilkowalski/skill -g
 npx skills add anthropics/skills --skill frontend-design -g
