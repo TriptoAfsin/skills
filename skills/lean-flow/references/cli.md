@@ -1,8 +1,37 @@
-# Any platform CLI
+# CLI first, any tool
 
-Use this for any CLI that reaches a remote account: hosting, databases, DNS, storage, email, payments, mobile builds,
-cloud (wrangler, supabase, vercel, fly, aws, gcloud, stripe, eas, resend, docker contexts and the rest).
-`github.md` and `railway.md` apply these same rules to `gh` and `railway`.
+lean-flow works through CLIs: they're scriptable, their output is small and checkable, and they leave a trail you
+can repeat. Prefer a CLI over clicking through a dashboard, and over an MCP or web UI when both do the job.
+
+This file covers any CLI, especially those that reach a remote account: hosting, databases, DNS, storage, email,
+payments, mobile builds, cloud. `github.md`, `railway.md` and `cloudflare.md` apply the same rules to their tools.
+
+## 0. Pick the tool: detect, then ask
+
+People use different tools for the same job. Don't assume a particular one.
+
+| Job | Common choices |
+|---|---|
+| Browser automation, screenshots, E2E | `playwright-cli`, `agent-browser`, Claude in Chrome, Chrome DevTools MCP, the repo's Playwright/Cypress suite |
+| Mobile and device | `agent-device`, `adb`, `xcrun simctl`, `eas`, Maestro |
+| Hosting and deploys | `wrangler`, `vercel`, `railway`, `fly`, `netlify`, `gcloud`, `aws` |
+| Database | `supabase`, `psql`, `neonctl`, `turso`, `wrangler d1`, the repo's migration tool |
+| Email, payments, other services | `resend`, `stripe`, the vendor's own CLI |
+| Containers | `docker`, `docker compose`, `podman` |
+
+Work out which one to use in this order and stop at the first that answers:
+
+1. **The user said so** in this session, or in their global preferences.
+2. **The repo says so:** AGENTS.md or CLAUDE.md, `package.json` scripts, config files (`wrangler.jsonc`/`.toml`,
+   `vercel.json`, `railway.json`, `fly.toml`, `supabase/`, `eas.json`, `playwright.config.*`, `compose.yaml`),
+   CI workflows.
+3. **What's installed:** `command -v <tool>` and the installed skills. A tool with a skill beats one without.
+4. **Still a real choice between two or more?** Ask once, in the question UI, with the recommended option first and
+   one line on why. Don't ask when only one fits, or when it's a quick read-only check either could do.
+
+After asking, offer to save the answer to the repo's AGENTS.md (a project choice) or the user's global preferences
+(a personal default), so the question isn't asked again. If no suitable CLI is installed, say which one you'd install
+and from where (the vendor's official package) and wait for a yes.
 
 ## 1. Find the vendor's own guidance first
 
@@ -62,7 +91,7 @@ version has changed since then, with `--help` before relying on them.
 
 | Tool | Who / where | Target flag | Preview | Default to watch |
 |---|---|---|---|---|
-| Cloudflare `wrangler` | `wrangler whoami` | `--env <name>` (account from config) | `wrangler deploy --dry-run` | No `--env` means the top-level (often production) config |
+| Cloudflare `wrangler` | `wrangler whoami` | `--env <name>`; `--remote` for data | `wrangler deploy --dry-run` | See `cloudflare.md`: data commands are local unless `--remote` |
 | Supabase `supabase` | `supabase projects list` | `--linked` / `--project-ref`; `--remote` in v3 | `supabase db push --dry-run` | CLI v3 runs against the **local** stack unless you pass `--remote` |
 | Vercel `vercel` | `vercel whoami` | `--scope <team>` | Plain `vercel` makes a preview deploy | `--prod` deploys to production |
 | Stripe `stripe` | `stripe config --list` | `--live` | Test mode is the default | `--live` touches real money: only on an explicit yes |

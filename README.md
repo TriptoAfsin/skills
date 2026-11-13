@@ -38,7 +38,8 @@ skills/lean-flow/
 │   ├── github.md            remotes across orgs, commits, PRs, CI, releases, advisories
 │   ├── verify-e2e.md        static → unit → build → browser at 1440 and 390 → E2E → after deploy
 │   ├── railway.md           --service always, pushing to main means deploying, variable names only
-│   ├── cli.md               any other platform CLI: read/write/destructive, pin the target, dry-run, secrets
+│   ├── cloudflare.md        wrangler: --env always, data is local unless --remote, D1 migrations, secrets, deploys
+│   ├── cli.md               CLI first: pick the tool (detect, then ask once), then any CLI safely: read/write/destructive, dry-run, secrets
 │   └── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
 └── scripts/
     └── dev-leftovers.ps1    lists dev servers, headless browsers and containers still running (Windows, report-only)
@@ -46,6 +47,8 @@ skills/lean-flow/
 
 The rules that matter most:
 
+- CLI first. It doesn't assume your tools: it detects them from you, then the repo, then what's installed, and asks
+  once if there's still a choice (for example `playwright-cli` vs `agent-browser`).
 - The repo's own verify and deploy rules win over these defaults.
 - Push, deploy, merge, release and variable changes need the user's yes. On Railway, pushing to `main` usually *is* deploying.
 - Never print secrets, and never submit forms against live credentials while testing.

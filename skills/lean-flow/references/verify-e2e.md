@@ -13,9 +13,11 @@ suppress a lint or type error, or weaken a check, just to get a pass.
 5. **E2E:** if the repo has a suite (`bunx playwright test`, `bun test:e2e`), run it for the flows you touched.
 6. **After deploy:** for anything user-facing, check the live URL. Don't say "shipped" about a deploy you haven't verified.
 
-## Browser checks with playwright-cli
+## Browser checks
 
-Use the Claude in Chrome tools when the extension is connected, otherwise `playwright-cli` (load its skill for the command reference).
+Use whichever browser tool the repo or user prefers: `playwright-cli`, `agent-browser`, the Claude in Chrome tools,
+Chrome DevTools MCP or similar. If more than one is available and nothing says which, pick by the rules in
+[cli.md](cli.md) §0. Load that tool's own skill for the command reference. The checks below are the same whatever the tool.
 
 - Check two viewports: **1440×900 and 390×844**. Take a full-page screenshot of each and actually look at it.
 - No horizontal scroll: `document.documentElement.scrollWidth === document.documentElement.clientWidth`.
