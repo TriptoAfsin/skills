@@ -7,7 +7,7 @@ Agent skills I use every day, packaged so any agent that supports the open
 
 | Skill | What it does |
 |---|---|
-| [`lean-flow`](skills/lean-flow) | The dev loop around the code: GitHub CLI, verification and E2E with playwright-cli, Railway deploys and variables, and cleaning up dev servers, browsers and Docker containers afterwards |
+| [`lean-flow`](skills/lean-flow) | The dev loop around the code: GitHub CLI, verification and E2E with playwright-cli, Railway deploys and variables, safe use of any other platform CLI, and cleaning up dev servers, browsers and Docker containers afterwards |
 | [`design-flow`](skills/design-flow) | UI design from brief to code: intake questions one at a time, two or three directions mocked up as a live Artifact, you pick, the system gets locked into `DESIGN.md`, then build, polish and verify |
 
 ## Install
@@ -38,6 +38,7 @@ skills/lean-flow/
 │   ├── github.md            remotes across orgs, commits, PRs, CI, releases, advisories
 │   ├── verify-e2e.md        static → unit → build → browser at 1440 and 390 → E2E → after deploy
 │   ├── railway.md           --service always, pushing to main means deploying, variable names only
+│   ├── cli.md               any other platform CLI: read/write/destructive, pin the target, dry-run, secrets
 │   └── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
 └── scripts/
     └── dev-leftovers.ps1    lists dev servers, headless browsers and containers still running (Windows, report-only)
