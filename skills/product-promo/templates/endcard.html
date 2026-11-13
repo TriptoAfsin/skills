@@ -1,0 +1,53 @@
+<!-- product-promo: the end card. Icon carried in, wordmark wipes in, then where to get it (badge + URL) and one
+     meta line. Holds at least 2.5 s after the last element lands. Remove the badge if there's no store. -->
+<template>
+  <style>
+    @font-face { font-family: "Display"; src: url("assets/fonts/display.woff2") format("woff2"); font-weight: 100 900; }
+    @font-face { font-family: "Mono"; src: url("assets/fonts/mono.woff2") format("woff2"); font-weight: 100 900; }
+    #root {
+      --ground: #0e1014; --text: #eceef2; --text-accent: #8fb0ff; --muted: #a3a9b4;
+      position: absolute; inset: 0; overflow: hidden; background: var(--ground);
+      font-family: "Display", system-ui, sans-serif; container-type: size;
+    }
+    #end-wrap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 22cqw; gap: 4.5cqh; }
+    #end-lockup { display: flex; align-items: center; gap: 2cqw; }
+    #end-icon { width: 20cqmin; height: 20cqmin; flex: none; }
+    #end-name { color: var(--text); font: 700 9.4cqw/1 "Display", system-ui, sans-serif; letter-spacing: -0.045em; white-space: nowrap; }
+    #end-get { display: flex; align-items: center; gap: 2cqw; flex-wrap: wrap; }
+    #end-badge { height: 8.9cqh; }
+    #end-url { color: var(--text-accent); font: 600 2.3cqw/1 "Mono", ui-monospace, monospace; letter-spacing: -0.02em; }
+    #end-meta { color: var(--muted); font: 500 1.9cqw/1.25 "Display", system-ui, sans-serif; }
+    @container (aspect-ratio < 1.2) {
+      #end-wrap { padding: 0 8cqw; gap: 3.5cqh; }
+      #end-lockup { flex-direction: column; align-items: flex-start; gap: 3cqw; }
+      #end-icon { width: 24cqw; height: 24cqw; }
+      #end-name { font-size: 14cqw; white-space: normal; }
+      #end-get { flex-direction: column; align-items: flex-start; gap: 2.5cqh; }
+      #end-badge { height: 13cqw; }
+      #end-url { font-size: 4.6cqw; }
+      #end-meta { font-size: 4.4cqw; }
+    }
+  </style>
+  <div id="root" data-composition-id="endcard">
+   <div id="end-wrap">
+    <div id="end-lockup">
+      <img id="end-icon" src="assets/icon.svg" alt="" />
+      <div id="end-name">Product</div>
+    </div>
+    <div id="end-get">
+      <img id="end-badge" src="assets/store-badge.svg" alt="" />
+      <div id="end-url">example.com/product</div>
+    </div>
+    <div id="end-meta">Free · Windows, macOS, Linux</div>
+   </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#end-icon", { y: 420, scale: 0.6, rotation: -8 }, { y: 0, scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.4)" }, 0.05);
+    tl.fromTo("#end-name", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 0.5);
+    tl.fromTo("#end-badge", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0.95);
+    tl.fromTo("#end-url", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 1.05);
+    tl.fromTo("#end-meta", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 1.25);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

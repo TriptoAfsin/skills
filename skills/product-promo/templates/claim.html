@@ -1,0 +1,28 @@
+<!-- product-promo: the claim. Two short lines, the second in the text accent, word by word. -->
+<template>
+  <style>
+    @font-face { font-family: "Display"; src: url("assets/fonts/display.woff2") format("woff2"); font-weight: 100 900; }
+    #root {
+      --ground: #0e1014; --text: #eceef2; --text-accent: #8fb0ff;
+      position: absolute; inset: 0; overflow: hidden; background: var(--ground);
+      font-family: "Display", system-ui, sans-serif; container-type: size;
+    }
+    #claim-wrap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 8.3cqw; gap: 2cqh; }
+    .cl { color: var(--text); font: 700 7.8cqw/1 "Display", system-ui, sans-serif; letter-spacing: -0.045em; }
+    .cl .w { display: inline-block; }
+    #claim-b { color: var(--text-accent); }
+    @container (aspect-ratio < 1.2) { .cl { font-size: 12.5cqw; line-height: 1.02; } #claim-wrap { gap: 1cqh; } }
+  </style>
+  <div id="root" data-composition-id="claim">
+   <div id="claim-wrap">
+    <div id="claim-a" class="cl"><span class="w">Your</span> <span class="w">first</span> <span class="w">line,</span></div>
+    <div id="claim-b" class="cl"><span class="w">the</span> <span class="w">promise.</span></div>
+   </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#claim-a .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08, ease: "power2.out" }, 0.1);
+    tl.fromTo("#claim-b .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08, ease: "power2.out" }, 0.55);
+    window.__timelines["claim"] = tl;
+  </script>
+</template>

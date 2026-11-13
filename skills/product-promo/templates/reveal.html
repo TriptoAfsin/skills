@@ -1,0 +1,38 @@
+<!-- product-promo: the reveal. A brand-colour flood wipes up, the icon pops, the name resolves letter by letter,
+     then a one-line sub. Wrap each letter of the name in <span class="l">, each word of the sub in <span class="w">. -->
+<template>
+  <style>
+    @font-face { font-family: "Display"; src: url("assets/fonts/display.woff2") format("woff2"); font-weight: 100 900; }
+    #root {
+      --accent: #1d4ed8; --on-accent: #ffffff; --on-accent-2: #dbe5ff;
+      position: absolute; inset: 0; overflow: hidden; background: var(--accent);
+      font-family: "Display", system-ui, sans-serif; container-type: size;
+    }
+    #reveal-lockup { position: absolute; left: 7.8cqw; top: 22cqh; display: flex; align-items: center; gap: 2cqw; }
+    #reveal-icon { width: 21cqmin; height: 21cqmin; flex: none; }
+    #reveal-name { color: var(--on-accent); font: 700 12cqw/1 "Display", system-ui, sans-serif; letter-spacing: -0.045em; white-space: nowrap; }
+    #reveal-name .l, #reveal-sub .w { display: inline-block; }
+    #reveal-sub { position: absolute; left: 8.1cqw; top: 55cqh; color: var(--on-accent-2); font: 600 3.75cqw/1.2 "Display", system-ui, sans-serif; letter-spacing: -0.02em; }
+    @container (aspect-ratio < 1.2) {
+      #reveal-lockup { flex-direction: column; align-items: flex-start; left: 8cqw; top: 26cqh; gap: 4cqw; }
+      #reveal-icon { width: 26cqw; height: 26cqw; }
+      #reveal-name { font-size: 15cqw; white-space: normal; }
+      #reveal-sub { left: 8cqw; top: auto; bottom: 24cqh; font-size: 7cqw; max-width: 84cqw; }
+    }
+  </style>
+  <div id="root" data-composition-id="reveal">
+    <div id="reveal-lockup">
+      <img id="reveal-icon" src="assets/icon.svg" alt="" />
+      <div id="reveal-name"><span class="l">P</span><span class="l">r</span><span class="l">o</span><span class="l">d</span><span class="l">u</span><span class="l">c</span><span class="l">t</span></div>
+    </div>
+    <div id="reveal-sub"><span class="w">More</span> <span class="w">than</span> <span class="w">a</span> <span class="w">tool.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#root", { clipPath: "inset(100% 0px 0px 0px)" }, { clipPath: "inset(0% 0px 0px 0px)", duration: 0.4, ease: "power2.inOut" }, 0);
+    tl.fromTo("#reveal-icon", { scale: 0.4, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.25);
+    tl.fromTo("#reveal-name .l", { opacity: 0.2, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, stagger: 0.06, ease: "power2.out" }, 0.35);
+    tl.fromTo("#reveal-sub .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067 }, 1.0);
+    window.__timelines["reveal"] = tl;
+  </script>
+</template>
