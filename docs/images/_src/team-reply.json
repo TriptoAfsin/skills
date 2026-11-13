@@ -1,0 +1,60 @@
+{
+ "title": "team-reply: read the thread, answer every question, keep it short",
+ "subtitle": "Same thread, two drafts",
+ "layout": "side",
+ "out": "../team-reply.png",
+ "panels": [
+  {
+   "label": "Before",
+   "image": "reply-before.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      105,
+      1046,
+      198
+     ],
+     "kind": "removed",
+     "note": "Warm-up and backstory before the answer"
+    },
+    {
+     "box": [
+      30,
+      305,
+      1046,
+      78
+     ],
+     "kind": "removed",
+     "note": "Too long, and one question missed"
+    }
+   ]
+  },
+  {
+   "label": "After",
+   "image": "reply-after.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      185,
+      1046,
+      118
+     ],
+     "kind": "added",
+     "note": "Each of their questions answered, in their order"
+    },
+    {
+     "box": [
+      30,
+      385,
+      1046,
+      38
+     ],
+     "kind": "added",
+     "note": "Word budget checked; saved as a draft, not sent"
+    }
+   ]
+  }
+ ]
+}

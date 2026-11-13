@@ -1,0 +1,11 @@
+{"title": "before-after: a plain screenshot in, a marked-up image out",
+ "subtitle": "Real app (Dev Cleaner) · one spec.json · the last Top CPU row is redacted",
+ "out": "../before-after.png",
+ "panels": [
+  {"label": "Before", "image": "ba-shot.png"},
+  {"label": "After", "image": "ba-shot.png", "marks": [
+    {"shape": "highlight", "box": [348, 138, 734, 34], "kind": "note", "note": "Highlight: the line that matters"},
+    {"shape": "circle", "box": [1694, 120, 112, 50], "kind": "added", "note": "Circle: a small target", "label": "Scan"},
+    {"box": [352, 392, 860, 472], "kind": "changed", "note": "Box: an area that changed"},
+    {"shape": "arrow", "from": [1300, 1010], "to": [1196, 856], "kind": "added", "note": "Arrow + callout: where to click", "label": "Click here"},
+    {"shape": "redact", "box": [1252, 688, 436, 46]}]}]}

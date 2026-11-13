@@ -1,0 +1,70 @@
+{
+ "title": "lean-flow: check it, ship it, leave the machine tidy",
+ "subtitle": "Same task, two agents",
+ "layout": "side",
+ "out": "../lean-flow.png",
+ "panels": [
+  {
+   "label": "Before",
+   "image": "lean-before.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      145,
+      1046,
+      38
+     ],
+     "kind": "removed",
+     "note": "Deployed to the linked default, which was the wrong service"
+    },
+    {
+     "box": [
+      30,
+      305,
+      1046,
+      118
+     ],
+     "kind": "removed",
+     "note": "Dev server, browser and container left running"
+    }
+   ]
+  },
+  {
+   "label": "After",
+   "image": "lean-after.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      105,
+      1046,
+      118
+     ],
+     "kind": "added",
+     "note": "Target checked, and the deploy waits for a yes"
+    },
+    {
+     "box": [
+      30,
+      225,
+      1046,
+      78
+     ],
+     "kind": "added",
+     "note": "Verified before saying done"
+    },
+    {
+     "box": [
+      30,
+      305,
+      1046,
+      118
+     ],
+     "kind": "added",
+     "note": "Leftover snapshot comes back clean"
+    }
+   ]
+  }
+ ]
+}

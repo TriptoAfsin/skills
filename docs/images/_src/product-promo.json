@@ -1,0 +1,68 @@
+{
+ "title": "product-promo: one real recording in, every format out",
+ "subtitle": "Before: a scripted recording of the real app + a click log \u00b7 After: the same shots recomposed per format",
+ "layout": "stack",
+ "width": 1100,
+ "out": "../product-promo.png",
+ "panels": [
+  {
+   "label": "Before",
+   "image": "promo-raw.png",
+   "crop": [
+    230,
+    0,
+    1652,
+    620
+   ],
+   "marks": [
+    {
+     "shape": "circle",
+     "box": [
+      1618,
+      112,
+      200,
+      48
+     ],
+     "kind": "note",
+     "note": "Every click is logged with its time and position (events.json)"
+    }
+   ]
+  },
+  {
+   "label": "After",
+   "image": "promo-formats.png",
+   "marks": [
+    {
+     "box": [
+      8,
+      8,
+      1904,
+      1064
+     ],
+     "kind": "added",
+     "note": "16:9: footage fills the width, title plate bottom left"
+    },
+    {
+     "box": [
+      1968,
+      8,
+      592,
+      1064
+     ],
+     "kind": "added",
+     "note": "9:16: camera zooms in on each click, plate under the footage"
+    },
+    {
+     "box": [
+      2616,
+      8,
+      1496,
+      1064
+     ],
+     "kind": "changed",
+     "note": "4:5 and 9:16: reveal and end card stack themselves"
+    }
+   ]
+  }
+ ]
+}

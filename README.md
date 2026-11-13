@@ -28,6 +28,8 @@ Update later with `npx skills update -g`.
 
 ## lean-flow
 
+![lean-flow before and after: an agent that deploys to the wrong service and leaves servers running, versus one that checks the target, verifies and cleans up](docs/images/lean-flow.png)
+
 The loop I run around every change: **check it, ship it, leave the machine tidy.**
 It holds conventions only. Command details come from the vendor skills it points to
 (`playwright-cli`, Railway's official skills).
@@ -61,6 +63,8 @@ The rules that matter most:
 
 ## design-flow
 
+![design-flow before and after: an agent that writes generic UI straight away, versus intake questions, Artifact directions and a pick before any code](docs/images/design-flow.png)
+
 My design process as a skill. **Nothing reaches the codebase until I've seen it and picked it.**
 
 ```
@@ -91,6 +95,8 @@ npx skills add jakubkrehel/make-interfaces-feel-better -g
 
 ## before-after
 
+![before-after: a plain Dev Cleaner screenshot next to the same screenshot with a highlight, circle, box, arrow with callout and a redacted row](docs/images/before-after.png)
+
 ```bash
 npx skills add TriptoAfsin/skills --skill before-after -g
 ```
@@ -100,6 +106,8 @@ Capture both states with whatever browser or device tool you have, write a small
 (box, circle, highlight, arrow, redact), with optional callout labels. A single panel gives one annotated screenshot.
 
 ## team-reply
+
+![team-reply before and after: a long rambling draft that misses a question, versus a short Slack draft that answers both, with its word count checked](docs/images/team-reply.png)
 
 ```bash
 npx skills add TriptoAfsin/skills --skill team-reply -g
@@ -113,6 +121,8 @@ of it with `~/.agents/team-reply.md` (for you) or `.messages/STYLE.md` (for one 
 
 ## product-promo
 
+![product-promo: one screen recording of the real app becomes 16:9, 9:16 and 4:5 cuts with the same look](docs/images/product-promo.png)
+
 ```bash
 npx skills add TriptoAfsin/skills --skill product-promo -g
 ```
@@ -121,6 +131,11 @@ Needs the HyperFrames skills (`npx hyperframes skills update`). Brief, then capt
 SPEC, the master cut, then each extra format recomposed. `templates/` holds a footage shot, the reveal, the claim and
 the end card. The last three adapt to any aspect ratio on their own. `scripts/scene_motion.py` turns the click log into
 camera and cursor motion framed for each format.
+
+## README images
+
+Every image above is rendered by the `before-after` skill itself: `python docs/make-images.py` redraws the text cards,
+and the specs in `docs/images/_src/` hold the rest.
 
 ## License
 

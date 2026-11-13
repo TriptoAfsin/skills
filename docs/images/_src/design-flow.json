@@ -1,0 +1,60 @@
+{
+ "title": "design-flow: nothing reaches the code until you've picked it",
+ "subtitle": "Same request, two agents",
+ "layout": "side",
+ "out": "../design-flow.png",
+ "panels": [
+  {
+   "label": "Before",
+   "image": "design-before.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      185,
+      1046,
+      158
+     ],
+     "kind": "removed",
+     "note": "Code changes straight away, with generic AI-looking choices"
+    }
+   ]
+  },
+  {
+   "label": "After",
+   "image": "design-after.png",
+   "marks": [
+    {
+     "box": [
+      30,
+      145,
+      1046,
+      78
+     ],
+     "kind": "added",
+     "note": "One question at a time, recommended answer first"
+    },
+    {
+     "box": [
+      30,
+      225,
+      1046,
+      78
+     ],
+     "kind": "added",
+     "note": "Directions mocked up as a live Artifact"
+    },
+    {
+     "box": [
+      30,
+      305,
+      1046,
+      78
+     ],
+     "kind": "added",
+     "note": "Built only after the pick, then checked"
+    }
+   ]
+  }
+ ]
+}
