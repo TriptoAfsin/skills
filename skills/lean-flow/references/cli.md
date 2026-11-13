@@ -4,7 +4,7 @@ lean-flow works through CLIs: they're scriptable, their output is small and chec
 can repeat. Prefer a CLI over clicking through a dashboard, and over an MCP or web UI when both do the job.
 
 This file covers any CLI, especially those that reach a remote account: hosting, databases, DNS, storage, email,
-payments, mobile builds, cloud. `github.md`, `railway.md` and `cloudflare.md` apply the same rules to their tools.
+payments, mobile builds, cloud. `github.md`, `railway.md`, `cloudflare.md` and `supabase.md` apply the same rules to their tools.
 
 ## 0. Pick the tool: detect, then ask
 
@@ -86,14 +86,14 @@ If you're unsure which kind a command is, treat it as the next row down.
 
 ## Per-tool quick reference
 
-The wrangler, supabase and stripe rows were checked in November 2026. Confirm the others, and any tool whose major
-version has changed since then, with `--help` before relying on them.
+Every row was checked in November 2026, against the CLI's own `--help` (wrangler 4.161, supabase 3.1, vercel 65,
+eas-cli 16/24, docker 29) or the vendor's docs (stripe). Re-check any tool whose major version has changed since.
 
 | Tool | Who / where | Target flag | Preview | Default to watch |
 |---|---|---|---|---|
 | Cloudflare `wrangler` | `wrangler whoami` | `--env <name>`; `--remote` for data | `wrangler deploy --dry-run` | See `cloudflare.md`: data commands are local unless `--remote` |
-| Supabase `supabase` | `supabase projects list` | `--linked` / `--project-ref`; `--remote` in v3 | `supabase db push --dry-run` | CLI v3 runs against the **local** stack unless you pass `--remote` |
-| Vercel `vercel` | `vercel whoami` | `--scope <team>` | Plain `vercel` makes a preview deploy | `--prod` deploys to production |
+| Supabase `supabase` | `supabase whoami`, `supabase projects list` | `--remote` (linked) or `--remote=<ref\|branch\|url>` | `supabase db push --remote --dry-run` | See `supabase.md`: v3 db commands hit the **local** stack unless `--remote` |
+| Vercel `vercel` | `vercel whoami` | `--scope <team>` (`-S`) | Plain `vercel` / `vercel deploy` makes a preview | `--prod` (or `--environment production`) is production, and **a new project's first deploy is production** |
 | Stripe `stripe` | `stripe config --list` | `--live` | Test mode is the default | `--live` touches real money: only on an explicit yes |
-| Expo `eas` | `eas whoami` | `--profile <name>`, `--environment` | Build locally first | `eas submit` and `eas update` reach real users |
-| Docker | `docker context ls` | `--context <name>` | `docker compose config` | The current context might be a remote host |
+| Expo `eas` | `eas whoami` | build and submit: `--profile <name>` (the profile's `environment` in `eas.json` picks the variables); update: `--environment`, `--channel`/`--branch` | `eas build --local` | `eas submit` and `eas update` reach real users. SDK 55+ requires `--environment` on `eas update` |
+| Docker | `docker context ls` | `--context <name>` (`-c`) | `docker compose config` | The current context might be a remote host |

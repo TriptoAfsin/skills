@@ -44,6 +44,7 @@ skills/lean-flow/
 │   ├── verify-e2e.md        static → unit → build → browser at 1440 and 390 → E2E → after deploy
 │   ├── railway.md           --service always, pushing to main means deploying, variable names only
 │   ├── cloudflare.md        wrangler: --env always, data is local unless --remote, D1 migrations, secrets, deploys
+│   ├── supabase.md          v3: local unless --remote, migrations dry-run first, secrets from a file
 │   ├── cli.md               CLI first: pick the tool (detect, then ask once), then any CLI safely: read/write/destructive, dry-run, secrets
 │   └── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
 └── scripts/
