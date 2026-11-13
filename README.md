@@ -44,7 +44,8 @@ skills/lean-flow/
 │   ├── cli.md               CLI first: pick the tool (detect, then ask once), then any CLI safely: read/write/destructive, dry-run, secrets
 │   └── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
 └── scripts/
-    └── dev-leftovers.ps1    lists dev servers, headless browsers and containers still running (Windows, report-only)
+    ├── dev-leftovers.sh     lists dev servers, headless browsers and containers still running (macOS/Linux, report-only)
+    └── dev-leftovers.ps1    the same for Windows
 ```
 
 The rules that matter most:

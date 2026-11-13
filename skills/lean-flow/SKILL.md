@@ -31,4 +31,4 @@ These are the house rules. The command details live in the vendor skills (`playw
 4. **Never print secrets.** Report variable names or pass/fail, never values. Never read `.env` into chat.
 5. **Never submit forms or fire webhooks against live credentials** while testing.
 6. **A task isn't done until it has been checked**, and the evidence (command plus result, or a screenshot) goes in the answer.
-7. **Leave the machine the way you found it.** Snapshot before (`scripts/dev-leftovers.ps1`), clean up after, and only stop what you started.
+7. **Leave the machine the way you found it.** Snapshot before (`scripts/dev-leftovers.sh` on macOS/Linux, `.ps1` on Windows), clean up after, and only stop what you started.

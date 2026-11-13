@@ -6,16 +6,20 @@ Clean up when the task is finished, including when it ended in failure. Only tou
 
 Before starting servers, browsers or containers:
 
-```powershell
-powershell -NoProfile -File ~/.agents/skills/lean-flow/scripts/dev-leftovers.ps1
+```bash
+sh ~/.agents/skills/lean-flow/scripts/dev-leftovers.sh                         # macOS, Linux, WSL
+powershell -NoProfile -File ~/.agents/skills/lean-flow/scripts/dev-leftovers.ps1  # Windows
 ```
+
+Both report the same three things (listening dev servers, automated browsers, Docker containers) and never stop
+anything. The macOS/Linux one uses `lsof`, or `ss` when `lsof` is missing.
 
 Run it again at the end and compare. Anything that was already running is mine: leave it alone and mention it.
 
 ## Checklist
 
 1. **Dev servers** (`next dev/start`, `vite`, `bun --watch`, `tauri dev`, email previews): stop the ones you started.
-   On Windows use `taskkill //PID <pid> //T //F` (`//T` also kills child processes), then confirm the port is free. Prefer the
+   Windows: `taskkill //PID <pid> //T //F` (`//T` also kills child processes). macOS/Linux: `kill <pid>`, then `kill -9 <pid>` only if it's still there after a few seconds. Then confirm the port is free. Prefer the
    repo's own command (`npm run clean`, or a smoke script that stops its own server).
 2. **Browsers:** close every Playwright or Chrome instance you launched, and check that no `chrome-headless-shell` or `ms-playwright` process is left.
 3. **Docker:** stop and remove containers you started (`docker compose down` in that repo, `docker rm -f <id>`).
