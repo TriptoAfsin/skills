@@ -53,3 +53,7 @@ Create a style file. Only the lines you write override the default, everything e
 
 The `People` list is how the destination and tone get remembered per person. Add to it when you learn something new
 (with the user's OK), instead of asking again.
+
+When there are more than a handful of people, or several organizations, keep a **people directory** instead: one
+profile per person and per organization, named in the style file as `- People directory: <path>`. See
+[people.md](people.md). Keep it somewhere private.
