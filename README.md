@@ -7,7 +7,7 @@ Agent skills I use every day, packaged so any agent that supports the open
 
 | Skill | What it does |
 |---|---|
-| [`lean-flow`](skills/lean-flow) | The dev loop around the code: GitHub CLI, verification and E2E with playwright-cli, Railway deploys and variables, safe use of any other platform CLI, and cleaning up dev servers, browsers and Docker containers afterwards |
+| [`lean-flow`](skills/lean-flow) | The dev loop around the code: GitHub CLI, verification and E2E with playwright-cli, Railway deploys and variables, safe use of any other platform CLI, cleaning up dev servers, browsers and Docker containers afterwards, and a configurable Done / Left / Blocked summary at the end |
 | [`design-flow`](skills/design-flow) | UI design from brief to code: intake questions one at a time, two or three directions mocked up as a live Artifact, you pick, the system gets locked into `DESIGN.md`, then build, polish and verify. Hallmark first, and missing handoff skills get installed |
 | [`before-after`](skills/before-after) | Before/after (or single) screenshots with numbered boxes, circles, arrows, highlights, callouts, redaction and a legend, rendered into one PNG with any capture tool |
 | [`product-promo`](skills/product-promo) | A 20–45 s product promo from real captures, in 16:9, 9:16, 1:1, 4:5 or custom, all with the same feel. Three storylines to pick from, a locked SPEC, a camera that follows the recorded clicks, each format recomposed (HyperFrames) |
@@ -38,7 +38,7 @@ It uses progressive disclosure, so an agent loads a short `SKILL.md` every time 
 
 ```
 skills/lean-flow/
-├── SKILL.md                 7 rules that always apply + which reference to read
+├── SKILL.md                 8 rules that always apply + which reference to read
 ├── references/
 │   ├── github.md            remotes across orgs, commits, PRs, CI, releases, advisories
 │   ├── verify-e2e.md        static → unit → build → browser at 1440 and 390 → E2E → after deploy
@@ -46,7 +46,8 @@ skills/lean-flow/
 │   ├── cloudflare.md        wrangler: --env always, data is local unless --remote, D1 migrations, secrets, deploys
 │   ├── supabase.md          v3: local unless --remote, migrations dry-run first, secrets from a file
 │   ├── cli.md               CLI first: pick the tool (detect, then ask once), then any CLI safely: read/write/destructive, dry-run, secrets
-│   └── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
+│   ├── cleanup.md           snapshot before and after, servers, browsers, Docker, Rust target/
+│   └── report.md            the ✅ Done / ⏳ Left / 🚧 Blocked summary, and how to override its format
 └── scripts/
     ├── dev-leftovers.sh     lists dev servers, headless browsers and containers still running (macOS/Linux, report-only)
     └── dev-leftovers.ps1    the same for Windows
@@ -61,6 +62,8 @@ The rules that matter most:
 - Never print secrets, and never submit forms against live credentials while testing.
 - A task isn't done until it has been checked, and the evidence goes in the answer.
 - Only clean up what you started.
+- Every task ends with a ✅ Done / ⏳ Left / 🚧 Blocked summary. Change the sections, emojis or layout in
+  `~/.agents/lean-flow.md` (global) or `.agents/lean-flow.md` (per repo).
 
 ## design-flow
 

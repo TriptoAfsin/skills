@@ -1,6 +1,6 @@
 ---
 name: lean-flow
-description: House conventions for the dev loop around the code - GitHub CLI (repos across several orgs, PRs, releases, CI runs, advisories), verification and E2E testing (playwright-cli, agent-browser or whichever browser tool the user prefers), Railway CLI deploys and variables, Cloudflare wrangler (Workers, Pages, D1, R2, KV, secrets), Supabase CLI (local stack, migrations, --remote, secrets, edge functions), choosing between tools by detecting the user's and repo's preference, safe use of any other platform CLI (vercel, stripe, eas, cloud CLIs - sort read/write/destructive, pin the target, dry-run first, secrets by name only), and cleaning up dev servers, browsers and Docker containers afterwards. Use when running gh, opening a PR or release, checking CI, verifying a change in the browser, writing or running E2E tests, deploying or inspecting a Railway service, running wrangler, supabase or any other platform CLI, choosing which tool to use for a job, or finishing a task that started servers or containers.
+description: House conventions for the dev loop around the code - GitHub CLI (repos across several orgs, PRs, releases, CI runs, advisories), verification and E2E testing (playwright-cli, agent-browser or whichever browser tool the user prefers), Railway CLI deploys and variables, Cloudflare wrangler (Workers, Pages, D1, R2, KV, secrets), Supabase CLI (local stack, migrations, --remote, secrets, edge functions), choosing between tools by detecting the user's and repo's preference, safe use of any other platform CLI (vercel, stripe, eas, cloud CLIs - sort read/write/destructive, pin the target, dry-run first, secrets by name only), and cleaning up dev servers, browsers and Docker containers afterwards, then ending with a configurable Done / Left / Blocked status summary. Use when running gh, opening a PR or release, checking CI, verifying a change in the browser, writing or running E2E tests, deploying or inspecting a Railway service, running wrangler, supabase or any other platform CLI, choosing which tool to use for a job, finishing a task that started servers or containers, or wrapping up any dev task with a status summary.
 ---
 
 # lean-flow
@@ -17,6 +17,7 @@ These are the house rules. The command details live in the vendor skills (`playw
 | Supabase: local stack, migrations, `--remote`, secrets, edge functions | [references/supabase.md](references/supabase.md) |
 | Choosing between tools (e.g. playwright-cli vs agent-browser), or any other CLI (Vercel, Stripe, EAS, cloud, Docker ...) | [references/cli.md](references/cli.md) |
 | Finishing a task that started servers, browsers or containers | [references/cleanup.md](references/cleanup.md) |
+| Ending a task (or stopping partway): the ✅ Done / ⏳ Left / 🚧 Blocked summary, and how to change its format | [references/report.md](references/report.md) |
 
 ## Always
 
@@ -33,3 +34,6 @@ These are the house rules. The command details live in the vendor skills (`playw
 5. **Never submit forms or fire webhooks against live credentials** while testing.
 6. **A task isn't done until it has been checked**, and the evidence (command plus result, or a screenshot) goes in the answer.
 7. **Leave the machine the way you found it.** Snapshot before (`scripts/dev-leftovers.sh` on macOS/Linux, `.ps1` on Windows), clean up after, and only stop what you started.
+8. **End with a status summary.** ✅ Done (checked), ⏳ Left, 🚧 Blocked (on whom, and what's needed), one line per
+   item, empty sections left out. The user can override the format in `.agents/lean-flow.md` (repo) or
+   `~/.agents/lean-flow.md` (global); see [report.md](references/report.md).
